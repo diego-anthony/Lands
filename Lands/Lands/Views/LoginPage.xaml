@@ -5,10 +5,39 @@
     x:Class="Lands.Views.LoginPage">
     <ContentPage.Content>
         <StackLayout
-            Padding="20">
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            Padding="10,20,10,5">
+            <Label
+                FontAttributes="Bold"
+                FontSize="Large"
+                HorizontalOptions="CenterAndExpand"
+                Text="Lands"
+                />
+            <Image
+                Source="onu"
+                WidthRequest="200"
+                />
+            <Label
+                Text="Email"
+                />
+            <Entry
+                Keyboard="Email"
+                Placeholder="Enter your email..."/>
+            <Label
+                Text="Password"
+                />
+            <Entry
+                IsPassword="True"
+                Placeholder="Enter your password..."/>
+            <ActivityIndicator>
+            </ActivityIndicator>
+            <Button
+                BackgroundColor="Navy"
+                BorderRadius="23"
+                Text="Login"
+                TextColor="White"
+                >
+                
+            </Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
