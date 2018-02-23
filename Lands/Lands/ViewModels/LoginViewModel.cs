@@ -1,13 +1,8 @@
-﻿
+﻿using Lands.Views;
+using Xamarin.Forms;
+
 namespace Lands.ViewModels
 {
-    using GalaSoft.MvvmLight.Command;
-    using Lands.Views;
-    using System.ComponentModel;
-    using System.Diagnostics;
-    using System.Windows.Input;
-    using Xamarin.Forms;
-
     public class LoginViewModel: BaseViewModel
     {
         #region Attributes
@@ -53,13 +48,6 @@ namespace Lands.ViewModels
 
 
         #region Commands
-        //public ICommand LoginCommand
-        //{
-        //    get
-        //    {
-        //        return new RelayCommand(LoginAsync);
-        //    }
-        //}
 
         public Command LoginCommand { get;}
 
@@ -99,6 +87,7 @@ namespace Lands.ViewModels
 
                 this.Email = string.Empty;
                 this.Password = string.Empty;
+                MainViewModel.GetInstance().Lands = new LandsViewModel();
                 await Application.Current.MainPage.Navigation.PushAsync(new LandsPage());
             }
             IsRunning = false;
