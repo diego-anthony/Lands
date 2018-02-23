@@ -104,7 +104,8 @@
     <None Include="Lands.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\facebook_logo.png" />
+    <Content Include="Assets\facebook_logo.scale-100.png" />
+    <AndroidResource Include="Assets\ic_chevron_right.png" />
     <Content Include="Assets\instagram_logo.png" />
     <Content Include="Assets\onu.png" />
     <Content Include="Assets\twitter_logo.png" />
