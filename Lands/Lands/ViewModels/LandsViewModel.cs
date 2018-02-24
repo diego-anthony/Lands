@@ -15,22 +15,21 @@ namespace Lands.ViewModels
         #endregion
 
         #region Attributes
+        private ObservableCollection<LandItemViewModel> m_lands;
         private bool m_isRefreshing;
-        private ObservableCollection<Land> m_lands;
         private string m_filter;
-        private List<Land> m_landList;
         #endregion
 
         #region Properties
+        public ObservableCollection<LandItemViewModel> Lands
+        {
+            get { return m_lands; }
+            set { SetValue(ref m_lands, value); }
+        }
         public bool IsRefreshing
         {
             get { return m_isRefreshing; }
             set { SetValue(ref m_isRefreshing, value); }
-        }
-        public ObservableCollection<Land> Lands
-        {
-            get { return m_lands; }
-            set { SetValue(ref m_lands, value); }
         }
         public string Filter
         {
@@ -46,6 +45,7 @@ namespace Lands.ViewModels
         #region Commands
         public Command RefreshCommand { get; }
         public Command SearchCommand { get; }
+        public Command SelectLandCommand { get; set; }
         #endregion
 
         #region Constructors
@@ -53,6 +53,7 @@ namespace Lands.ViewModels
         {
             RefreshCommand = new Command(LoadLandsAsync);
             SearchCommand = new Command(Search);
+            SelectLandCommand = new Command(LoadLandsAsync);
             m_apiService = new ApiService();
             this.LoadLandsAsync();
         }
@@ -84,20 +85,54 @@ namespace Lands.ViewModels
                     response.Message,
                     "Accept");
             }
-            m_landList = (List<Land>)response.Result;
-            this.Lands = new ObservableCollection<Land>(m_landList);
+            // Corregir
+
+            MainViewModel.GetInstance().LandsList = (List<Land>) response.Result;
+            this.Lands = new ObservableCollection<LandItemViewModel>(this.ToLandItemViewModel());
             IsRefreshing = false;
         }
+
+        private IEnumerable<LandItemViewModel> ToLandItemViewModel()
+        {
+            return MainViewModel.GetInstance().LandsList.Select(l => new LandItemViewModel()
+            {
+                Alpha2Code = l.Name,
+                Alpha3Code = l.Alpha3Code,
+                AltSpellings = l.AltSpellings,
+                Area = l.Area,
+                Borders = l.Borders,
+                CallingCodes = l.CallingCodes,
+                Capital = l.Capital,
+                Cioc = l.Cioc,
+                Currencies = l.Currencies,
+                Demonym = l.Demonym,
+                Flag = l.Flag,
+                Gini = l.Gini,
+                Languages = l.Languages,
+                Latlng = l.Latlng,
+                Name = l.Name,
+                NativeName = l.NativeName,
+                NumericCode = l.NumericCode,
+                Population = l.Population,
+                Region = l.Region,
+                RegionalBlocs = l.RegionalBlocs,
+                Subregion = l.Subregion,
+                Timezones = l.Timezones,
+                TopLevelDomain = l.TopLevelDomain,
+                Translations = l.Translations,
+            });
+        }
+
         private void Search()
         {
             if (string.IsNullOrEmpty(this.Filter))
             {
-                this.Lands = new ObservableCollection<Land>(m_landList);
+                this.Lands = new ObservableCollection<LandItemViewModel>(this.ToLandItemViewModel());
             }
             else
             {
-                this.Lands = new ObservableCollection<Land>(
-                    m_landList.Where(l => l.Name.ToLower().Contains(this.Filter) ||
+                this.Lands = new ObservableCollection<LandItemViewModel>(
+                    this.ToLandItemViewModel().Where(l => l.Name.ToLower().Contains(this.Filter) ||
                                           l.Capital.ToLower().Contains(this.Filter)));
             }
         }

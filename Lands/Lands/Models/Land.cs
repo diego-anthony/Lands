@@ -72,9 +72,9 @@ namespace Lands.Models
         public string Flag { get; set; }
 
         [JsonProperty(PropertyName = "regionalBlocs")]
-        public List<RegionalBloc> regionalBlocs { get; set; }
+        public List<RegionalBloc> RegionalBlocs { get; set; }
 
         [JsonProperty(PropertyName = "cioc")]
-        public string cioc { get; set; }
+        public string Cioc { get; set; }
     }
 }
