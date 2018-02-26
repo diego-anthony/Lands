@@ -5,7 +5,7 @@
              xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              x:Class="Lands.Views.LandsPage"
-             BackgroundColor="Silver"
+             BackgroundColor="WhiteSmoke"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Lands">
     <ContentPage.Resources>
@@ -18,13 +18,11 @@
             BindingContext="{Binding Lands}"
             Padding="5">
             <SearchBar
-                BackgroundColor="Silver"
                 HeightRequest="46"
                 Placeholder="Search..."
                 SearchCommand="{Binding SearchCommand}"
                 Text="{Binding Filter, Mode=TwoWay}"/>
-            <ListView 
-                BackgroundColor="Silver"
+            <ListView
                 HasUnevenRows="true" 
                 IsPullToRefreshEnabled="true"
                 IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
@@ -35,7 +33,7 @@
                     <DataTemplate>
                         <ViewCell>
                             <Frame
-                                CornerRadius="20"
+                                CornerRadius="15"
                                 HasShadow="true"
                                 Margin="5">
                                 <Frame.GestureRecognizers>
