@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lands.Backend.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,10 +13,19 @@ namespace Lands.Backend
     {
         protected void Application_Start()
         {
+            this.CheckRolesAndSuperUser();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+
+        private void CheckRolesAndSuperUser()
+        {
+            UsersHelper.CheckRole("Admin");
+            UsersHelper.CheckRole("User");
+            UsersHelper.CheckSuperUser();
+
         }
     }
 }
