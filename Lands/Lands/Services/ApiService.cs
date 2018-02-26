@@ -43,27 +43,26 @@ namespace Lands.Services
 
         public async Task<TokenResponse> GetToken(
             string urlBase,
-            string username,
+            string userName,
             string password)
         {
+            TokenResponse rpt;
             try
             {
                 var client = new HttpClient();
                 client.BaseAddress = new Uri(urlBase);
                 var response = await client.PostAsync("Token",
-                    new StringContent(string.Format(
-                    "grant_type=password&username={0}&password={1}",
-                    username, password),
+                    new StringContent($"grant_type=password&username={userName}&password={password}",
                     Encoding.UTF8, "application/x-www-form-urlencoded"));
                 var resultJSON = await response.Content.ReadAsStringAsync();
-                var result = JsonConvert.DeserializeObject<TokenResponse>(
-                    resultJSON);
-                return result;
+                var result = JsonConvert.DeserializeObject<TokenResponse>(resultJSON);
+                rpt = result;
             }
             catch
             {
-                return null;
+                rpt = null;
             }
+            return rpt;
         }
 
         public async Task<Response> Get<T>(
