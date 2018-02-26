@@ -48,8 +48,9 @@
     </EmbeddedResource>
   </ItemGroup>
 <!--
+-->
 <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>Full</DebugType>
 </PropertyGroup>
--->
+
 </Project>
