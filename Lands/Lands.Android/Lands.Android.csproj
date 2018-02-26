@@ -88,12 +88,6 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Lands\Lands.csproj">
-      <Project>{7893CC84-9A44-40FD-83DE-94136552CD5A}</Project>
-      <Name>Lands</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\onu.png" />
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +140,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\ic_action_g_translate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lands\Lands.csproj">
+      <Project>{05e3ad37-349f-4d72-94eb-86da97196460}</Project>
+      <Name>Lands</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

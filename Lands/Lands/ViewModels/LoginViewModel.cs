@@ -11,6 +11,7 @@ namespace Lands.ViewModels
         private bool _isRunning;
         private string _password;
         #endregion
+
         #region Properties
         public string Email
         {
@@ -46,7 +47,6 @@ namespace Lands.ViewModels
         }
         #endregion
 
-
         #region Commands
 
         public Command LoginCommand { get;}
@@ -65,7 +65,6 @@ namespace Lands.ViewModels
             }
             else if (string.IsNullOrEmpty(this.Password))
             {
-                
                 await Application.Current.MainPage.DisplayAlert(
                     "Error",
                     "You must enter an password.",

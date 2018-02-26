@@ -19,6 +19,7 @@ namespace Lands.ViewModels
             this.Login = new LoginViewModel();
         }
         #endregion
+
         #region Singleton
         private static MainViewModel _instance;
 

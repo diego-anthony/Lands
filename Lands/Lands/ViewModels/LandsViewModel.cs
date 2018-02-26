@@ -71,25 +71,27 @@ namespace Lands.ViewModels
                     connection.Message,
                     "Accept");
                 await Application.Current.MainPage.Navigation.PopToRootAsync();
-                return;
             }
-
-            var response = await m_apiService.GetList<Land>(
-                "https://restcountries.eu",
-                "/rest",
-                "/v2/all");
-            if (!response.IsSuccess)
+            else
             {
-                await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    response.Message,
-                    "Accept");
+                var response = await m_apiService.GetList<Land>(
+                    "https://restcountries.eu",
+                    "/rest",
+                    "/v2/all");
+                if (!response.IsSuccess)
+                {
+                    await Application.Current.MainPage.DisplayAlert(
+                        "Error",
+                        response.Message,
+                        "Accept");
+                }
+                else
+                {
+                    MainViewModel.GetInstance().LandsList = (List<Land>)response.Result;
+                    this.Lands = new ObservableCollection<LandItemViewModel>(this.ToLandItemViewModel());
+                    IsRefreshing = false;
+                }
             }
-            // Corregir
-
-            MainViewModel.GetInstance().LandsList = (List<Land>) response.Result;
-            this.Lands = new ObservableCollection<LandItemViewModel>(this.ToLandItemViewModel());
-            IsRefreshing = false;
         }
 
         private IEnumerable<LandItemViewModel> ToLandItemViewModel()

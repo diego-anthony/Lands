@@ -26,6 +26,7 @@ namespace Lands.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::NGraphics.Android.Custom.Resource.String.library_name = global::Lands.Droid.Resource.String.library_name;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::Lands.Droid.Resource.Attribute.actionBarSize;
 		}
 		
@@ -3759,6 +3760,9 @@ namespace Lands.Droid
 			
 			// aapt resource value: 0x7f090038
 			public const int character_counter_pattern = 2131296312;
+			
+			// aapt resource value: 0x7f09003e
+			public const int library_name = 2131296318;
 			
 			// aapt resource value: 0x7f090000
 			public const int mr_button_content_description = 2131296256;
