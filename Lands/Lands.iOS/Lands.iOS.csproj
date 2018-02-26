@@ -122,15 +122,24 @@
     <PackageReference Include="Xam.Plugin.Connectivity">
       <Version>3.1.1</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.FFImageLoading">
+      <Version>2.3.4</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.FFImageLoading.Forms">
+      <Version>2.3.4</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.FFImageLoading.Svg">
+      <Version>2.3.4</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms">
+      <Version>2.3.4</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations">
+      <Version>2.3.4</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="2.5.0.122203" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <ItemGroup>
-    <ProjectReference Include="..\Lands\Lands.csproj">
-      <Project>{7893CC84-9A44-40FD-83DE-94136552CD5A}</Project>
-      <Name>Lands</Name>
-    </ProjectReference>
-  </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\facebook_logo.png" />
   </ItemGroup>
@@ -139,5 +148,11 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\twitter_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lands\Lands.csproj">
+      <Project>{05e3ad37-349f-4d72-94eb-86da97196460}</Project>
+      <Name>Lands</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

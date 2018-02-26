@@ -49,7 +49,7 @@ namespace Lands.ViewModels
             this.IsRemembered = true;
             IsEnabled = true;
             this.Email = "dsanthony997@gmail.com";
-            this.Password = "123";
+            this.Password = "123456";
             LoginCommand = new Command(LoginAsync);
         }
         #endregion
