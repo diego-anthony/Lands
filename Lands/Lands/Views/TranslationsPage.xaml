@@ -6,7 +6,7 @@
              Title="Transtations"
              Icon="ic_action_g_translate">
     <ContentPage.Content>
-        <StackLayout>
+        <ScrollView>
             <StackLayout
             BindingContext="{Binding Land}"
             Padding="5">
@@ -137,6 +137,6 @@
                         TextColor="Black"/>
                 </Grid>
             </StackLayout>
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

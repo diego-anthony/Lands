@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Lands.Helpers;
 using Lands.Services;
 using Lands.Views;
 using Xamarin.Forms;
@@ -55,21 +55,22 @@ namespace Lands.ViewModels
         #endregion
 
         #region Commands
-
         public Command LoginCommand { get;}
+        #endregion
 
+        #region Methods
         private async void LoginAsync()
         {
             IsEnabled = false;
             IsRunning = true;
             if (string.IsNullOrEmpty(this.Email))
             {
-                ShowErrorMessageAlertAsync("You must enter an email.");
+                ShowErrorMessageAlertAsync(Languages.EmailValidation);
                 IsEnabled = true;
             }
             else if (string.IsNullOrEmpty(this.Password))
             {
-                ShowErrorMessageAlertAsync("You must enter an password.");
+                ShowErrorMessageAlertAsync(Languages.PasswordValidation);
                 IsEnabled = true;
             }
             else
@@ -78,7 +79,7 @@ namespace Lands.ViewModels
                 if (connection.IsSuccess)
                 {
                     var urlBase = "http://landsapi97.azurewebsites.net";
-                    var token = await this.m_apiService.GetToken(urlBase,this.Email,this.Password);
+                    var token = await this.m_apiService.GetToken(urlBase, this.Email, this.Password);
 
                     if (token != null)
                     {
@@ -100,7 +101,7 @@ namespace Lands.ViewModels
                     }
                     else
                     {
-                        ShowErrorMessageAlertAsync("Something was wrong, please try later");
+                        ShowErrorMessageAlertAsync(Languages.OtherError);
                         this.IsEnabled = true;
                         this.Password = string.Empty;
                     }
@@ -119,9 +120,9 @@ namespace Lands.ViewModels
         private async void ShowErrorMessageAlertAsync(string message)
         {
             await Application.Current.MainPage.DisplayAlert(
-                        "Error",
+                        Languages.Error,
                         message,
-                        "Ok");
+                        Languages.Accept);
         }
         #endregion
     }
